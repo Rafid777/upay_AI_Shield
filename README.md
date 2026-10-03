@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # upay AI Shield
 ### AI-Powered Transaction Risk & Scam Intelligence Platform
 **Track:** Trust & Risk Intelligence | **Domain:** Mobile Financial Services (MFS) & Fintech (Bangladesh Context)
@@ -281,3 +282,6 @@ The platform features a built-in **1-Click Demo Bar** directly in the top naviga
 - **Fail-Safe Operation:** If external AI services encounter downtime or quota exhaustion, the system transitions to a deterministic fallback preserving core operations without hallucination.
 - **Human Oversight:** The platform enforces human accountability for all consequential actions.
 - **Safe Terminology:** Network clusters are framed cautiously (*"Potential suspicious network"*), never declaring individuals as confirmed criminals without due process.
+=======
+# upay_AI_Shield
+>>>>>>> 06553046714e32f387e4a50c98b1f92b05158086
