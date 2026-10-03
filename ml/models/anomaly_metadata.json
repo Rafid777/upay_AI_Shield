@@ -1,0 +1,28 @@
+{
+  "model_name": "upay AI Shield Isolation Forest Anomaly Detector",
+  "algorithm": "IsolationForest",
+  "version": "v3.0.0-unsupervised",
+  "training_date": "2026-10-03T09:11:59.240937+00:00",
+  "training_samples": 18425,
+  "features": [
+    "amount",
+    "hour",
+    "amount_deviation",
+    "transactions_last_1h",
+    "transactions_last_24h",
+    "failed_attempts",
+    "amount_zscore",
+    "hour_deviation",
+    "velocity_ratio",
+    "failed_attempt_rate"
+  ],
+  "n_estimators": 150,
+  "contamination": 0.03,
+  "calibration": {
+    "min_score": -0.07995069141616062,
+    "p10_score": 0.03583125700197929,
+    "p50_score": 0.09678074636638623,
+    "max_score": 0.171010251733835
+  },
+  "description": "Unsupervised outlier detector fitted exclusively on normal behavioral patterns to flag structural deviations without label reliance."
+}

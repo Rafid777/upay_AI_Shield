@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>upay AI Shield | AI-Powered Transaction Risk & Scam Intelligence Platform</title>
+  <meta name="description" content="Enterprise financial risk monitoring platform for Bangladesh MFS powered by XGBoost, SHAP explainability, Scam Intelligence, Network Graphs, and Gemini AI.">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="app-container">
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="brand-section">
+      <div class="brand-logo">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V13H5V8.26l7-3.89v8.62z"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <h1>upay AI Shield</h1>
+        <span>Risk & Scam Intelligence</span>
+      </div>
+    </div>
+
+    <ul class="nav-menu">
+      <li class="nav-item active" data-view="dashboard-view" id="nav-dashboard">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        <span>Risk Dashboard</span>
+      </li>
+      <li class="nav-item" data-view="transactions-view" id="nav-transactions">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <span>Transaction Ledger</span>
+      </li>
+      <li class="nav-item" data-view="simulator-view" id="nav-simulator">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        <span>Live Risk Simulator</span>
+      </li>
+      <li class="nav-item" data-view="behavior-view" id="nav-behavior">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>Customer Behavior</span>
+      </li>
+      <li class="nav-item" data-view="scam-view" id="nav-scam">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+        <span>Scam Intelligence</span>
+      </li>
+      <li class="nav-item" data-view="network-view" id="nav-network">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        <span>Network Intelligence</span>
+      </li>
+      <li class="nav-item" data-view="cases-view" id="nav-cases">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><path d="M9 14l2 2 4-4"/></svg>
+        <span>Case Management</span>
+      </li>
+      <li class="nav-item" data-view="model-view" id="nav-model">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+        <span>Model & SHAP XAI</span>
+      </li>
+      <li class="nav-item" data-view="monitoring-view" id="nav-monitoring">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        <span>Model Monitoring</span>
+      </li>
+      <li class="nav-item" data-view="responsible-view" id="nav-responsible">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>Responsible AI</span>
+      </li>
+    </ul>
+
+    <div class="sidebar-status">
+      <div class="status-indicator">
+        <span class="status-dot"></span>
+        <span>XGBoost & Gemini Active</span>
+      </div>
+      <p>Dataset: 20,000 Transactions</p>
+      <p style="margin-top: 4px;">Human-in-the-Loop Enforced</p>
+    </div>
+  </aside>
+
+  <!-- Main Application Wrapper -->
+  <div class="main-wrapper">
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="page-title">
+        <h2 id="current-view-title">Executive Risk Dashboard</h2>
+        <p>Real-time behavioral telemetry, SHAP explainability & Gemini investigation</p>
+      </div>
+
+      <div class="topbar-actions">
+        <!-- Interactive 1-Click Demo Mode -->
+        <div style="display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.03); padding: 4px 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+          <span style="font-size: 0.76rem; color: #94a3b8; font-weight: 600;">DEMO:</span>
+          <button class="btn-action" style="padding: 4px 8px; font-size: 0.72rem; color: #34d399; border-color: rgba(16,185,129,0.3);" id="btn-demo-low" title="Load Normal Transaction TX100001">Normal</button>
+          <button class="btn-action" style="padding: 4px 8px; font-size: 0.72rem; color: #fbbf24; border-color: rgba(245,158,11,0.3);" id="btn-demo-med" title="Load Medium Risk Transaction TX101058">Medium</button>
+          <button class="btn-action" style="padding: 4px 8px; font-size: 0.72rem; color: #f87171; border-color: rgba(239,68,68,0.4);" id="btn-demo-high" title="Load ATO High Risk Transaction TX103934">High (ATO)</button>
+        </div>
+
+        <div class="badge-governance">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+          <span>Policy: No Autonomous Freezing</span>
+        </div>
+
+        <button class="btn-primary" id="btn-refresh-data">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          Refresh
+        </button>
+      </div>
+    </header>
+
+    <!-- Content Body -->
+    <main class="content-body">
+
+      <!-- ==========================================
+           VIEW 1: DASHBOARD OVERVIEW
+           ========================================== -->
+      <section id="dashboard-view" class="view-section active">
+        <!-- 8 Top KPI Cards -->
+        <div class="kpi-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+          <div class="kpi-card total">
+            <div class="kpi-header">
+              <span class="kpi-label">Total Transactions</span>
+              <div class="kpi-icon"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+            </div>
+            <div class="kpi-value" id="kpi-total">20,000</div>
+            <div class="kpi-subtext">Calibrated ML pipeline</div>
+          </div>
+
+          <div class="kpi-card high">
+            <div class="kpi-header">
+              <span class="kpi-label">High Risk (Escalated)</span>
+              <div class="kpi-icon"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+            </div>
+            <div class="kpi-value" id="kpi-high">0</div>
+            <div class="kpi-subtext" id="kpi-high-sub">Requires Analyst Review</div>
+          </div>
+
+          <div class="kpi-card medium">
+            <div class="kpi-header">
+              <span class="kpi-label">Medium Risk</span>
+              <div class="kpi-icon"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+            </div>
+            <div class="kpi-value" id="kpi-med">0</div>
+            <div class="kpi-subtext" id="kpi-med-sub">Additional Verification</div>
+          </div>
+
+          <div class="kpi-card low">
+            <div class="kpi-header">
+              <span class="kpi-label">Low Risk (Standard)</span>
+              <div class="kpi-icon"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+            </div>
+            <div class="kpi-value" id="kpi-low">0</div>
+            <div class="kpi-subtext" id="kpi-low-sub">Normal Flow Continue</div>
+          </div>
+
+          <div class="kpi-card high">
+            <div class="kpi-header">
+              <span class="kpi-label">Open Cases</span>
+              <div class="kpi-icon"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/></svg></div>
+            </div>
+            <div class="kpi-value" id="kpi-open-cases">0</div>
+            <div class="kpi-subtext">Active triage workspace</div>
+          </div>
+
+          <div class="kpi-card total">
+            <div class="kpi-header">
+              <span class="kpi-label">Human Reviews</span>
+              <div class="kpi-icon"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            </div>
+            <div class="kpi-value" id="kpi-human-reviews">0</div>
+            <div class="kpi-subtext">Flagged queue volume</div>
+          </div>
+
+          <div class="kpi-card medium">
+            <div class="kpi-header">
+              <span class="kpi-label">Potential Scam Patterns</span>
+              <div class="kpi-icon"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+            </div>
+            <div class="kpi-value" id="kpi-potential-scam">0</div>
+            <div class="kpi-subtext">Requires Investigation</div>
+          </div>
+
+          <div class="kpi-card high">
+            <div class="kpi-header">
+              <span class="kpi-label">Potential ATO Cases</span>
+              <div class="kpi-icon"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+            </div>
+            <div class="kpi-value" id="kpi-potential-ato">0</div>
+            <div class="kpi-subtext">New device & location shift</div>
+          </div>
+        </div>
+
+        <!-- Analytics Row: Charts -->
+        <div class="analytics-grid">
+          <!-- Risk Distribution Chart Panel -->
+          <div class="panel-card">
+            <div class="panel-title">
+              <span>Risk Tier Distribution</span>
+              <span class="badge low" id="dist-total-badge">100% Monitored</span>
+            </div>
+            <div class="chart-container">
+              <canvas id="riskDistributionChart"></canvas>
+            </div>
+            <div style="display: flex; justify-content: space-around; margin-top: 16px; font-size: 0.8rem;">
+              <span style="color: #34d399;">● Low Risk: <strong id="lbl-low-pct">--</strong></span>
+              <span style="color: #fbbf24;">● Medium: <strong id="lbl-med-pct">--</strong></span>
+              <span style="color: #f87171;">● High Risk: <strong id="lbl-high-pct">--</strong></span>
+            </div>
+          </div>
+
+          <!-- Hourly Risk Trend Chart Panel -->
+          <div class="panel-card">
+            <div class="panel-title">
+              <span>24-Hour Velocity & Risk Volume</span>
+              <span style="font-size: 0.78rem; color: var(--text-dim);">Hourly Activity Profile</span>
+            </div>
+            <div class="chart-container">
+              <canvas id="hourlyTrendChart"></canvas>
+            </div>
+            <p style="font-size: 0.76rem; color: var(--text-muted); margin-top: 14px; text-align: center;">
+              Peak anomaly bursts typically occur between 01:00 and 04:00 (off-peak Bangladesh MFS window).
+            </p>
+          </div>
+        </div>
+
+        <!-- Top Risk Signals & Business Impact Simulation -->
+        <div class="analytics-grid">
+          <!-- Top Risk Signals -->
+          <div class="panel-card">
+            <div class="panel-title">
+              <span>Top Empirical Risk Signals Detected</span>
+              <span style="font-size: 0.78rem; color: var(--text-dim);">Historical Dataset Attributions</span>
+            </div>
+            <div class="signal-list" id="top-signals-list">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+
+          <!-- Business Impact Simulation -->
+          <div class="panel-card">
+            <div class="panel-title">
+              <span>Operational Risk Impact Simulation</span>
+              <span class="badge medium">Simulated Impact</span>
+            </div>
+            <div class="impact-metrics-grid">
+              <div class="impact-item">
+                <span class="impact-label">Automated Review Volume Reduction</span>
+                <span class="impact-val" id="impact-reduction">--</span>
+                <span class="impact-sub">Low-risk transactions cleared instantly</span>
+              </div>
+              <div class="impact-item">
+                <span class="impact-label">Potentially Prevented Risk Volume</span>
+                <span class="impact-val" id="impact-prevented">--</span>
+                <span class="impact-sub">Total amount in high-risk transactions</span>
+              </div>
+              <div class="impact-item">
+                <span class="impact-label">Total Volume Monitored</span>
+                <span class="impact-val" id="impact-monitored">--</span>
+                <span class="impact-sub">Synthetic BDT transaction ledger</span>
+              </div>
+              <div class="impact-item">
+                <span class="impact-label">Automated Continue Rate</span>
+                <span class="impact-val" id="impact-frictionless">--</span>
+                <span class="impact-sub">Uninterrupted customer transfers</span>
+              </div>
+            </div>
+
+            <div style="margin-top: 20px;">
+              <button class="btn-primary" style="width: 100%; justify-content: center;" id="btn-quick-sample">
+                Open Active ATO Case TX103934
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Transaction Channel Intelligence Table -->
+        <div class="panel-card" style="margin-bottom: 24px;">
+          <div class="panel-title">
+            <span>Transaction Channel Intelligence</span>
+            <span style="font-size: 0.78rem; color: var(--text-dim);">Live Channel Telemetry (APP, USSD, WEB, AGENT)</span>
+          </div>
+          <div class="table-container">
+            <table class="custom-table" id="channel-intel-table">
+              <thead>
+                <tr>
+                  <th>Channel</th>
+                  <th>Transaction Count</th>
+                  <th>Total Value (BDT)</th>
+                  <th>Average Value (BDT)</th>
+                  <th>High-Risk Count</th>
+                  <th>High-Risk %</th>
+                  <th>Risk Profile Indicator</th>
+                </tr>
+              </thead>
+              <tbody id="channel-intel-tbody">
+                <tr><td colspan="7" style="text-align: center;">Loading channel statistics...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Recent High Risk Transactions Table -->
+        <div class="panel-card">
+          <div class="panel-title">
+            <span>Recent High-Risk Anomaly Alerts</span>
+            <button class="btn-action" id="btn-view-all-tx">View Full Ledger</button>
+          </div>
+          <div class="table-container">
+            <table class="custom-table" id="recent-high-table">
+              <thead>
+                <tr>
+                  <th>Transaction ID</th>
+                  <th>Customer</th>
+                  <th>Amount (BDT)</th>
+                  <th>Time</th>
+                  <th>Deviation</th>
+                  <th>New Device</th>
+                  <th>Risk Score</th>
+                  <th>Top Signal</th>
+                  <th>Action</th>
+                  <th>Investigation</th>
+                </tr>
+              </thead>
+              <tbody id="recent-high-tbody">
+                <tr><td colspan="10" style="text-align: center;">Loading high-risk records...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           VIEW 2: TRANSACTIONS MONITOR
+           ========================================== -->
+      <section id="transactions-view" class="view-section">
+        <div class="panel-card">
+          <div class="panel-title">
+            <span>Full Transaction Monitoring Ledger</span>
+            <span id="tx-ledger-count" style="font-size: 0.82rem; color: var(--text-dim);">Showing records</span>
+          </div>
+
+          <!-- Filter Toolbar -->
+          <div class="filter-toolbar">
+            <div class="search-box">
+              <input type="text" id="tx-search-input" class="search-input" placeholder="Search by Transaction ID, Customer, Location...">
+            </div>
+            
+            <div class="filter-group">
+              <select id="filter-risk" class="select-filter">
+                <option value="ALL">All Risk Tiers</option>
+                <option value="HIGH">High Risk Only</option>
+                <option value="MEDIUM">Medium Risk</option>
+                <option value="LOW">Low Risk</option>
+              </select>
+
+              <select id="filter-type" class="select-filter">
+                <option value="ALL">All Types</option>
+                <option value="SEND_MONEY">Send Money</option>
+                <option value="CASH_OUT">Cash Out</option>
+                <option value="PAYMENT">Merchant Payment</option>
+                <option value="RECHARGE">Mobile Recharge</option>
+                <option value="CASH_IN">Cash In</option>
+              </select>
+
+              <select id="filter-channel" class="select-filter">
+                <option value="ALL">All Channels</option>
+                <option value="APP">Mobile App</option>
+                <option value="USSD">USSD (*268#)</option>
+                <option value="WEB">Web Portal</option>
+                <option value="AGENT">Agent Counter</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Transactions Table -->
+          <div class="table-container">
+            <table class="custom-table" id="all-transactions-table">
+              <thead>
+                <tr>
+                  <th>Transaction ID</th>
+                  <th>Timestamp</th>
+                  <th>Customer</th>
+                  <th>Type</th>
+                  <th>Channel</th>
+                  <th>Amount (BDT)</th>
+                  <th>Recipient</th>
+                  <th>Location</th>
+                  <th>Risk Score</th>
+                  <th>Level</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="all-transactions-tbody">
+                <tr><td colspan="11" style="text-align: center;">Loading ledger transactions...</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Pagination Bar -->
+          <div class="pagination-bar">
+            <span id="pagination-info" style="font-size: 0.82rem; color: var(--text-dim);">Page 1 of 1000</span>
+            <div class="pagination-buttons">
+              <button class="btn-page" id="btn-prev-page" disabled>Previous</button>
+              <button class="btn-page" id="btn-next-page">Next</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           VIEW 3: LIVE RISK SIMULATOR & WHAT-IF
+           ========================================== -->
+      <section id="simulator-view" class="view-section">
+        <!-- Sub-tab switcher -->
+        <div style="display: flex; gap: 12px; margin-bottom: 20px;">
+          <button class="btn-action active-tab" id="tab-btn-live-sim" style="padding: 10px 20px; font-weight: 600;">Live Risk Simulator</button>
+          <button class="btn-action" id="tab-btn-what-if" style="padding: 10px 20px; font-weight: 600;">What-If Counterfactual Simulator</button>
+        </div>
+
+        <!-- Mode 1: Live Risk Simulator -->
+        <div id="panel-live-simulator">
+          <div class="analytics-grid">
+            <!-- Parameter Form -->
+            <div class="panel-card">
+              <div class="panel-title">
+                <span>Interactive Telemetry & Risk Simulator</span>
+                <button class="btn-action" id="btn-load-preset-fraud">Load Scam Pattern</button>
+              </div>
+              <p style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 20px;">
+                Simulate incoming transaction telemetry to test XGBoost scoring, SHAP feature attribution, ATO, and scam detection in real time.
+              </p>
+
+              <form id="sim-form" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                <div>
+                  <label style="font-size: 0.78rem; color: var(--text-muted); display: block; margin-bottom: 6px;">Amount (BDT)</label>
+                  <input type="number" id="sim-amount" class="search-input" style="width: 100%;" value="18500" min="0">
+                </div>
+                <div>
+                  <label style="font-size: 0.78rem; color: var(--text-muted); display: block; margin-bottom: 6px;">Transaction Type</label>
+                  <select id="sim-tx-type" class="select-filter" style="width: 100%;">
+                    <option value="SEND_MONEY">SEND_MONEY</option>
+                    <option value="CASH_OUT">CASH_OUT</option>
+                    <option value="PAYMENT">PAYMENT</option>
+                    <option value="RECHARGE">RECHARGE</option>
+                    <option value="CASH_IN">CASH_IN</option>
+                  </select>
+                </div>
+                <div>
+                  <label style="font-size: 0.78rem; color: var(--text-muted); display: block; margin-bottom: 6px;">Channel</label>
+                  <select id="sim-channel" class="select-filter" style="width: 100%;">
+                    <option value="APP">APP</option>
+                    <option value="USSD">USSD</option>
+                    <option value="WEB">WEB</option>
+                    <option value="AGENT">AGENT</option>
+                  </select>
+                </div>
+                <div>
+                  <label style="font-size: 0.78rem; color: var(--text-muted); display: block; margin-bottom: 6px;">Time of Day (Hour: 0-23)</label>
+                  <input type="number" id="sim-hour" class="search-input" style="width: 100%;" value="2" min="0" max="23">
+                </div>
+                <div>
+                  <label style="font-size: 0.78rem; color: var(--text-muted); display: block; margin-bottom: 6px;">Transactions in Last 1 Hour</label>
+                  <input type="number" id="sim-vel-1h" class="search-input" style="width: 100%;" value="8" min="0">
+                </div>
+                <div>
+                  <label style="font-size: 0.78rem; color: var(--text-muted); display: block; margin-bottom: 6px;">Transactions in Last 24 Hours</label>
+                  <input type="number" id="sim-vel-24h" class="search-input" style="width: 100%;" value="22" min="0">
+                </div>
+                <div>
+                  <label style="font-size: 0.78rem; color: var(--text-muted); display: block; margin-bottom: 6px;">Failed Authentication Attempts</label>
+                  <input type="number" id="sim-failed" class="search-input" style="width: 100%;" value="3" min="0">
+                </div>
+                <div>
+                  <label style="font-size: 0.78rem; color: var(--text-muted); display: block; margin-bottom: 6px;">Account Age (Days)</label>
+                  <input type="number" id="sim-age" class="search-input" style="width: 100%;" value="45" min="0">
+                </div>
+                <div>
+                  <label style="font-size: 0.78rem; color: var(--text-muted); display: block; margin-bottom: 6px;">Receiver Prior Tx Count</label>
+                  <input type="number" id="sim-receiver-count" class="search-input" style="width: 100%;" value="1" min="0">
+                </div>
+                <div>
+                  <label style="font-size: 0.78rem; color: var(--text-muted); display: block; margin-bottom: 6px;">Amount Deviation (x baseline)</label>
+                  <input type="number" step="0.1" id="sim-deviation" class="search-input" style="width: 100%;" value="14.8" min="0">
+                </div>
+
+                <!-- Binary Toggle Flags -->
+                <div style="grid-column: span 2; display: flex; gap: 24px; margin-top: 8px;">
+                  <label style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; cursor: pointer;">
+                    <input type="checkbox" id="sim-new-device" checked> New Device
+                  </label>
+                  <label style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; cursor: pointer;">
+                    <input type="checkbox" id="sim-new-receiver" checked> New Recipient
+                  </label>
+                  <label style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; cursor: pointer;">
+                    <input type="checkbox" id="sim-loc-changed" checked> Location Anomaly
+                  </label>
+                </div>
+
+                <div style="grid-column: span 2; margin-top: 14px;">
+                  <button type="button" class="btn-primary" id="btn-run-simulation" style="width: 100%; justify-content: center;">
+                    ANALYZE TRANSACTION
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Simulation Live Output -->
+            <div class="panel-card" id="sim-result-card">
+              <div class="panel-title">
+                <span>Inference Result</span>
+                <span class="badge low">Live Model Inference</span>
+              </div>
+              <div style="text-align: center; padding: 16px 0;">
+                <div style="font-size: 0.82rem; color: var(--text-dim); text-transform: uppercase;">Assessed Risk Score</div>
+                <div id="sim-score-display" style="font-size: 3.5rem; font-weight: 800; color: #f87171; line-height: 1.1; margin: 8px 0;">
+                  91.0
+                </div>
+                <div id="sim-badge-display">
+                  <span class="badge high">HIGH RISK (HUMAN_REVIEW)</span>
+                </div>
+                <div id="sim-action-display" style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-top: 8px;">
+                  Action: HUMAN REVIEW REQUIRED
+                </div>
+              </div>
+
+              <!-- Dynamic SHAP factors -->
+              <div style="margin-top: 16px;">
+                <span style="font-size: 0.82rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 10px;">Top Contributing Risk Factors (SHAP)</span>
+                <div id="sim-shap-list" style="display: flex; flex-direction: column; gap: 8px;">
+                  <!-- Filled dynamically -->
+                </div>
+              </div>
+
+              <!-- ATO & Scam Indicators from Simulation -->
+              <div id="sim-indicators-box" style="margin-top: 16px; padding: 12px; background: rgba(0,0,0,0.25); border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+                <div style="font-size: 0.8rem; font-weight: 700; color: #fca5a5; margin-bottom: 6px;">Detected Anomaly Signals:</div>
+                <ul id="sim-signals-list" style="padding-left: 18px; font-size: 0.78rem; color: var(--text-muted);">
+                  <li>Evaluating telemetry...</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mode 2: What-If Counterfactual Simulator -->
+        <div id="panel-what-if" style="display: none;">
+          <div class="panel-card" style="margin-bottom: 24px;">
+            <div class="panel-title">
+              <span>What-If Risk Counterfactual Simulator</span>
+              <span class="badge medium">Simulation Only</span>
+            </div>
+            <p style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 20px;">
+              Counterfactual decision-support tool: Modify specific risk signals on an actual flagged transaction to observe the precise model score delta.
+              <strong style="color: #60a5fa;">Simulation only — not a production transaction decision.</strong>
+            </p>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+              <!-- Left: Controls -->
+              <div style="background: rgba(0,0,0,0.25); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 18px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                  <span style="font-size: 0.88rem; font-weight: 700;">Base Transaction: <span id="whatif-base-tx" style="color: #60a5fa;">TX103934</span></span>
+                  <button class="btn-action" id="btn-whatif-load-demo" style="padding: 4px 8px; font-size: 0.74rem;">Load High-Risk Preset</button>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 14px;">
+                  <div>
+                    <label style="display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 6px;">
+                      <span>New Device Status</span>
+                      <strong id="whatif-lbl-device" style="color: #f87171;">YES (Original)</strong>
+                    </label>
+                    <select id="whatif-device" class="select-filter" style="width: 100%;">
+                      <option value="1">YES (Unregistered / New Device)</option>
+                      <option value="0">NO (Recognized Customer Device)</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label style="display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 6px;">
+                      <span>New Receiver Status</span>
+                      <strong id="whatif-lbl-receiver" style="color: #f87171;">YES (Original)</strong>
+                    </label>
+                    <select id="whatif-receiver" class="select-filter" style="width: 100%;">
+                      <option value="1">YES (First-Time Recipient)</option>
+                      <option value="0">NO (Known Recipient)</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label style="display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 6px;">
+                      <span>Location Anomaly Status</span>
+                      <strong id="whatif-lbl-location" style="color: #f87171;">YES (Original)</strong>
+                    </label>
+                    <select id="whatif-location" class="select-filter" style="width: 100%;">
+                      <option value="1">YES (Geographic Shift Detected)</option>
+                      <option value="0">NO (Standard Home Location)</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label style="display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 6px;">
+                      <span>Simulated Amount (BDT)</span>
+                      <span id="whatif-amount-val" style="color: #cbd5e1;">৳18,500</span>
+                    </label>
+                    <input type="range" id="whatif-amount-slider" min="1000" max="80000" step="1000" value="18500" style="width: 100%;">
+                  </div>
+
+                  <div>
+                    <label style="display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 6px;">
+                      <span>Velocity Last 1 Hour</span>
+                      <span id="whatif-vel-val" style="color: #cbd5e1;">8 tx/h</span>
+                    </label>
+                    <input type="range" id="whatif-vel-slider" min="1" max="15" step="1" value="8" style="width: 100%;">
+                  </div>
+
+                  <button type="button" class="btn-primary" id="btn-run-whatif" style="width: 100%; justify-content: center; margin-top: 10px;">
+                    Run Counterfactual Simulation
+                  </button>
+                </div>
+              </div>
+
+              <!-- Right: Comparison Delta Card -->
+              <div style="background: rgba(0,0,0,0.25); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 18px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                  <span style="font-size: 0.88rem; font-weight: 700; display: block; margin-bottom: 16px;">Live Counterfactual Score Comparison</span>
+                  
+                  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; text-align: center; background: rgba(255,255,255,0.02); padding: 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+                    <div>
+                      <div style="font-size: 0.74rem; color: var(--text-dim); text-transform: uppercase;">ORIGINAL</div>
+                      <div id="whatif-orig-score" style="font-size: 1.8rem; font-weight: 800; color: #f87171; margin-top: 4px;">91.0</div>
+                      <span class="badge high" id="whatif-orig-level" style="font-size: 0.68rem;">HIGH</span>
+                    </div>
+
+                    <div>
+                      <div style="font-size: 0.74rem; color: var(--text-dim); text-transform: uppercase;">SIMULATED</div>
+                      <div id="whatif-sim-score" style="font-size: 1.8rem; font-weight: 800; color: #34d399; margin-top: 4px;">--</div>
+                      <span class="badge low" id="whatif-sim-level" style="font-size: 0.68rem;">--</span>
+                    </div>
+
+                    <div>
+                      <div style="font-size: 0.74rem; color: var(--text-dim); text-transform: uppercase;">CHANGE</div>
+                      <div id="whatif-delta" style="font-size: 1.8rem; font-weight: 800; color: #38bdf8; margin-top: 4px;">--</div>
+                      <span style="font-size: 0.72rem; color: var(--text-dim);">Points Delta</span>
+                    </div>
+                  </div>
+
+                  <div style="margin-top: 18px;">
+                    <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 8px;">Top Changed Risk Factors:</span>
+                    <div id="whatif-changed-factors" style="display: flex; flex-direction: column; gap: 6px; font-size: 0.8rem; color: var(--text-main);">
+                      <p style="color: var(--text-dim);">Click 'Run Counterfactual Simulation' to calculate factor shifts.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div style="font-size: 0.72rem; color: var(--text-dim); border-top: 1px solid var(--border-color); padding-top: 10px; margin-top: 14px;">
+                  ⚠️ Simulation only — does not alter production customer risk score or database state.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           VIEW 4: CUSTOMER BEHAVIOR PROFILE
+           ========================================== -->
+      <section id="behavior-view" class="view-section">
+        <div class="panel-card" style="margin-bottom: 24px;">
+          <div class="panel-title">
+            <span>Customer Behavioral Baseline & Deviation Intelligence</span>
+            <div style="display: flex; gap: 10px;">
+              <input type="text" id="behavior-cust-search" class="search-input" placeholder="Enter Customer ID (e.g. CUST02516)" value="CUST02516" style="width: 240px;">
+              <button class="btn-primary" id="btn-fetch-behavior">Search</button>
+            </div>
+          </div>
+          <p style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 20px;">
+            Empirical baseline derived from customer transaction tenure, typical transacting hours, registered device hardware, and historical counterparties.
+          </p>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <!-- Normal Profile Card -->
+            <div style="background: rgba(0,0,0,0.25); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 18px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                <h4 style="font-size: 0.92rem; color: #34d399;">Customer Normal Behavior Profile</h4>
+                <span class="badge low" id="behavior-cust-id-badge">CUST02516</span>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 0.82rem;">
+                <div>
+                  <span style="color: var(--text-dim);">Average Transaction Amount:</span>
+                  <div id="beh-normal-amount" style="font-size: 1.1rem; font-weight: 700; color: white;">৳1,250.00</div>
+                </div>
+                <div>
+                  <span style="color: var(--text-dim);">Typical Transaction Hours:</span>
+                  <div id="beh-normal-hours" style="font-size: 1.1rem; font-weight: 700; color: white;">10 AM – 9 PM</div>
+                </div>
+                <div>
+                  <span style="color: var(--text-dim);">Known Registered Devices:</span>
+                  <div id="beh-normal-devices" style="font-size: 1.1rem; font-weight: 700; color: white;">2 Devices</div>
+                </div>
+                <div>
+                  <span style="color: var(--text-dim);">Known Receivers:</span>
+                  <div id="beh-normal-receivers" style="font-size: 1.1rem; font-weight: 700; color: white;">5 Beneficiaries</div>
+                </div>
+                <div>
+                  <span style="color: var(--text-dim);">Average Daily Transactions:</span>
+                  <div id="beh-normal-daily" style="font-size: 1.1rem; font-weight: 700; color: white;">4 / day</div>
+                </div>
+                <div>
+                  <span style="color: var(--text-dim);">Primary Normal Location:</span>
+                  <div id="beh-normal-loc" style="font-size: 1.1rem; font-weight: 700; color: white;">Dhaka</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Current Transaction Telemetry Card -->
+            <div style="background: rgba(0,0,0,0.25); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 18px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                <h4 style="font-size: 0.92rem; color: #f87171;">Current Evaluated Transaction</h4>
+                <span class="badge high" id="beh-current-tx-badge">TX103934</span>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 0.82rem;">
+                <div>
+                  <span style="color: var(--text-dim);">Current Amount:</span>
+                  <div id="beh-curr-amount" style="font-size: 1.1rem; font-weight: 700; color: #f87171;">৳18,500.00</div>
+                </div>
+                <div>
+                  <span style="color: var(--text-dim);">Transaction Hour:</span>
+                  <div id="beh-curr-hour" style="font-size: 1.1rem; font-weight: 700; color: #f87171;">02:13 AM</div>
+                </div>
+                <div>
+                  <span style="color: var(--text-dim);">Hardware Device:</span>
+                  <div id="beh-curr-device" style="font-size: 1.1rem; font-weight: 700; color: #f87171;">NEW / UNREGISTERED</div>
+                </div>
+                <div>
+                  <span style="color: var(--text-dim);">Beneficiary Account:</span>
+                  <div id="beh-curr-receiver" style="font-size: 1.1rem; font-weight: 700; color: #f87171;">NEW / UNSEEN</div>
+                </div>
+                <div>
+                  <span style="color: var(--text-dim);">Location:</span>
+                  <div id="beh-curr-loc" style="font-size: 1.1rem; font-weight: 700; color: #f87171;">Sylhet (CHANGED)</div>
+                </div>
+                <div>
+                  <span style="color: var(--text-dim);">1-Hour Velocity:</span>
+                  <div id="beh-curr-velocity" style="font-size: 1.1rem; font-weight: 700; color: #f87171;">9 / hour</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Behavioral Deviations Banner -->
+          <div style="margin-top: 20px; background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.3); border-radius: var(--radius-sm); padding: 16px;">
+            <h4 style="font-size: 0.88rem; color: #fca5a5; font-weight: 700; margin-bottom: 8px;">Calculated Behavioral Deviations:</h4>
+            <div id="beh-deviations-container" style="display: flex; flex-direction: column; gap: 6px; font-size: 0.82rem; color: #cbd5e1;">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+
+          <!-- Customer Recent History Table -->
+          <div style="margin-top: 20px;">
+            <h4 style="font-size: 0.88rem; color: #60a5fa; margin-bottom: 10px;">Recent Historical Transactions for Customer</h4>
+            <div class="table-container">
+              <table class="custom-table" id="behavior-tx-table">
+                <thead>
+                  <tr>
+                    <th>Transaction ID</th>
+                    <th>Timestamp</th>
+                    <th>Type</th>
+                    <th>Channel</th>
+                    <th>Amount (BDT)</th>
+                    <th>Recipient</th>
+                    <th>Location</th>
+                    <th>Risk Score</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="behavior-tx-tbody">
+                  <tr><td colspan="9" style="text-align: center;">Loading customer history...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           VIEW 5: SCAM PATTERN INTELLIGENCE
+           ========================================== -->
+      <section id="scam-view" class="view-section">
+        <div class="panel-card" style="margin-bottom: 24px;">
+          <div class="panel-title">
+            <span>Scam Pattern Intelligence Engine</span>
+            <span class="badge medium">9 Empirical Patterns</span>
+          </div>
+          <p style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 20px;">
+            Identifies coordinated and behavioral scam patterns using empirical signals from live transaction telemetry and customer baselines.
+            <strong style="color: #fbbf24;">Status: Produces evidence for human investigation; does not declare confirmed crime autonomously.</strong>
+          </p>
+
+          <!-- 9 Patterns Grid -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin-bottom: 24px;">
+            <div class="kpi-card" style="padding: 14px;">
+              <span style="font-size: 0.72rem; color: #38bdf8; font-weight: 700;">PATTERN 1</span>
+              <div style="font-size: 0.88rem; font-weight: 700; margin: 4px 0;">Unusual High-Value Transfer</div>
+              <p style="font-size: 0.76rem; color: var(--text-muted);">Amount exceeds customer's historical average by &ge; 4.0&times;.</p>
+            </div>
+            <div class="kpi-card" style="padding: 14px;">
+              <span style="font-size: 0.72rem; color: #38bdf8; font-weight: 700;">PATTERN 2</span>
+              <div style="font-size: 0.88rem; font-weight: 700; margin: 4px 0;">New Receiver Transfer</div>
+              <p style="font-size: 0.76rem; color: var(--text-muted);">Outflow routed to previously unseen recipient account.</p>
+            </div>
+            <div class="kpi-card" style="padding: 14px;">
+              <span style="font-size: 0.72rem; color: #38bdf8; font-weight: 700;">PATTERN 3</span>
+              <div style="font-size: 0.88rem; font-weight: 700; margin: 4px 0;">Rapid Repeated Transfers</div>
+              <p style="font-size: 0.76rem; color: var(--text-muted);">&ge; 4 transactions completed within 1 hour window.</p>
+            </div>
+            <div class="kpi-card" style="padding: 14px;">
+              <span style="font-size: 0.72rem; color: #38bdf8; font-weight: 700;">PATTERN 4</span>
+              <div style="font-size: 0.88rem; font-weight: 700; margin: 4px 0;">New Device Transfer</div>
+              <p style="font-size: 0.76rem; color: var(--text-muted);">Transfer executed from unverified hardware device ID.</p>
+            </div>
+            <div class="kpi-card" style="padding: 14px;">
+              <span style="font-size: 0.72rem; color: #38bdf8; font-weight: 700;">PATTERN 5</span>
+              <div style="font-size: 0.88rem; font-weight: 700; margin: 4px 0;">Suspicious Time Activity</div>
+              <p style="font-size: 0.76rem; color: var(--text-muted);">Transfer initiated between 01:00 AM and 05:00 AM.</p>
+            </div>
+            <div class="kpi-card" style="padding: 14px;">
+              <span style="font-size: 0.72rem; color: #38bdf8; font-weight: 700;">PATTERN 6</span>
+              <div style="font-size: 0.88rem; font-weight: 700; margin: 4px 0;">Multiple Failed Attempts</div>
+              <p style="font-size: 0.76rem; color: var(--text-muted);">Preceded by &ge; 2 failed PIN / OTP authentication attempts.</p>
+            </div>
+            <div class="kpi-card" style="padding: 14px;">
+              <span style="font-size: 0.72rem; color: #38bdf8; font-weight: 700;">PATTERN 7</span>
+              <div style="font-size: 0.88rem; font-weight: 700; margin: 4px 0;">Location Change</div>
+              <p style="font-size: 0.76rem; color: var(--text-muted);">Transfer originated from district outside primary home region.</p>
+            </div>
+            <div class="kpi-card" style="padding: 14px;">
+              <span style="font-size: 0.72rem; color: #38bdf8; font-weight: 700;">PATTERN 8</span>
+              <div style="font-size: 0.88rem; font-weight: 700; margin: 4px 0;">High Velocity Activity</div>
+              <p style="font-size: 0.76rem; color: var(--text-muted);">&ge; 15 transactions completed in past 24 hours.</p>
+            </div>
+            <div class="kpi-card" style="padding: 14px;">
+              <span style="font-size: 0.72rem; color: #38bdf8; font-weight: 700;">PATTERN 9</span>
+              <div style="font-size: 0.88rem; font-weight: 700; margin: 4px 0;">Multiple Risk Signals</div>
+              <p style="font-size: 0.76rem; color: var(--text-muted);">Simultaneous combination of 3 or more high-risk indicators.</p>
+            </div>
+          </div>
+
+          <!-- Active Scam Alert Feed -->
+          <div>
+            <div class="panel-title" style="margin-bottom: 12px;">
+              <span>High-Risk Transactions Triggering Scam Patterns</span>
+            </div>
+            <div class="table-container">
+              <table class="custom-table" id="scam-alerts-table">
+                <thead>
+                  <tr>
+                    <th>Transaction ID</th>
+                    <th>Customer</th>
+                    <th>Amount (BDT)</th>
+                    <th>Matched Signals</th>
+                    <th>Potential Pattern</th>
+                    <th>Severity</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="scam-alerts-tbody">
+                  <tr><td colspan="8" style="text-align: center;">Scanning transactions for scam patterns...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           VIEW 6: NETWORK & ENTITY INTELLIGENCE
+           ========================================== -->
+      <section id="network-view" class="view-section">
+        <div class="panel-card" style="margin-bottom: 24px;">
+          <div class="panel-title">
+            <span>Suspicious Network & Coordinated Relationship Intelligence</span>
+            <div style="display: flex; gap: 10px;">
+              <input type="text" id="network-cust-search" class="search-input" placeholder="Search Customer (e.g. CUST02516)" value="CUST02516" style="width: 240px;">
+              <button class="btn-primary" id="btn-search-network">Explore Network</button>
+            </div>
+          </div>
+          <p style="font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px;">
+            Maps multi-entity relationships across Customers, Beneficiaries, Hardware Devices, and Locations. 
+            Identifies coordinated syndicates and multi-account hardware sharing. 
+            <strong style="color: #60a5fa;">Shows Potential Suspicious Networks — does not declare confirmed criminal activity.</strong>
+          </p>
+
+          <!-- Network Summary Metrics Grid -->
+          <div class="kpi-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin-bottom: 20px;">
+            <div class="kpi-card total">
+              <div class="kpi-header"><span class="kpi-label">Connected Customers</span></div>
+              <div class="kpi-value" id="net-connected-cust">0</div>
+              <div class="kpi-subtext">Linked accounts</div>
+            </div>
+            <div class="kpi-card medium">
+              <div class="kpi-header"><span class="kpi-label">Shared Receivers</span></div>
+              <div class="kpi-value" id="net-shared-recv">0</div>
+              <div class="kpi-subtext">Common beneficiaries</div>
+            </div>
+            <div class="kpi-card high">
+              <div class="kpi-header"><span class="kpi-label">Shared Devices</span></div>
+              <div class="kpi-value" id="net-shared-dev">0</div>
+              <div class="kpi-subtext">Multi-account hardware</div>
+            </div>
+            <div class="kpi-card low">
+              <div class="kpi-header"><span class="kpi-label">Shared Locations</span></div>
+              <div class="kpi-value" id="net-shared-loc">0</div>
+              <div class="kpi-subtext">Originating districts</div>
+            </div>
+            <div class="kpi-card total">
+              <div class="kpi-header"><span class="kpi-label">Total Transactions</span></div>
+              <div class="kpi-value" id="net-tx-count">0</div>
+              <div class="kpi-subtext">Cluster activity volume</div>
+            </div>
+            <div class="kpi-card high">
+              <div class="kpi-header"><span class="kpi-label">Total Volume (BDT)</span></div>
+              <div class="kpi-value" id="net-total-bdt" style="font-size: 1.3rem;">৳0.00</div>
+              <div class="kpi-subtext">Cluster flow volume</div>
+            </div>
+          </div>
+
+          <!-- Interactive Network Graph Canvas / SVG -->
+          <div style="background: rgba(0,0,0,0.35); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 18px; margin-bottom: 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <h4 style="font-size: 0.9rem; color: #60a5fa;">Interactive Entity Relationship Graph</h4>
+              <div style="font-size: 0.74rem; color: var(--text-dim); display: flex; gap: 14px;">
+                <span><span style="color: #60a5fa;">●</span> Customer</span>
+                <span><span style="color: #f87171;">●</span> Receiver</span>
+                <span><span style="color: #fbbf24;">●</span> Device</span>
+                <span><span style="color: #34d399;">●</span> Location</span>
+              </div>
+            </div>
+            <div id="network-graph-container" style="width: 100%; height: 360px; background: rgba(10, 14, 23, 0.7); border-radius: var(--radius-sm); position: relative; overflow: hidden;">
+              <!-- Rendered via SVG / Canvas -->
+              <svg id="network-svg" width="100%" height="100%"></svg>
+            </div>
+            <div id="network-node-detail" style="margin-top: 10px; font-size: 0.8rem; color: var(--text-muted); min-height: 24px;">
+              Click any node in the graph to inspect related connections.
+            </div>
+          </div>
+
+          <!-- Coordinated Inflow and Device Tables -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div style="background: rgba(0,0,0,0.25); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 18px;">
+              <h4 style="font-size: 0.88rem; color: #60a5fa; margin-bottom: 12px;">High Beneficiary Fan-In (Potential Coordinated Inflow)</h4>
+              <div class="table-container">
+                <table class="custom-table" id="table-network-receivers">
+                  <thead>
+                    <tr>
+                      <th>Beneficiary ID</th>
+                      <th>Unique Senders</th>
+                      <th>Total Tx</th>
+                      <th>Total Value (BDT)</th>
+                      <th>Pattern</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tbody-network-receivers">
+                    <tr><td colspan="5" style="text-align: center;">Loading network patterns...</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div style="background: rgba(0,0,0,0.25); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 18px;">
+              <h4 style="font-size: 0.88rem; color: #60a5fa; margin-bottom: 12px;">Multi-Account Hardware Sharing (Device Re-use)</h4>
+              <div class="table-container">
+                <table class="custom-table" id="table-network-devices">
+                  <thead>
+                    <tr>
+                      <th>Device ID</th>
+                      <th>Distinct Accounts</th>
+                      <th>Total Transactions</th>
+                      <th>Pattern Indicator</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tbody-network-devices">
+                    <tr><td colspan="4" style="text-align: center;">Loading shared devices...</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           VIEW 7: ANALYST CASE MANAGEMENT
+           ========================================== -->
+      <section id="cases-view" class="view-section">
+        <div class="panel-card" style="margin-bottom: 24px;">
+          <div class="panel-title">
+            <span>Analyst Case Management Workspace</span>
+            <span class="badge low">Audit Trail Active</span>
+          </div>
+          <p style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 20px;">
+            Human-in-the-loop investigation lifecycle management. AI flags anomaly signals and synthesizes evidence; certified human analysts make the final consequential decision.
+          </p>
+
+          <!-- Case Summary Counters -->
+          <div class="kpi-grid" style="grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); margin-bottom: 20px;">
+            <div class="kpi-card total">
+              <div class="kpi-header"><span class="kpi-label">Total Cases</span></div>
+              <div class="kpi-value" id="case-stat-total">0</div>
+              <div class="kpi-subtext">All opened investigations</div>
+            </div>
+            <div class="kpi-card high">
+              <div class="kpi-header"><span class="kpi-label">Open Cases</span></div>
+              <div class="kpi-value" id="case-stat-open">0</div>
+              <div class="kpi-subtext">Awaiting initial review</div>
+            </div>
+            <div class="kpi-card medium">
+              <div class="kpi-header"><span class="kpi-label">Under Review</span></div>
+              <div class="kpi-value" id="case-stat-review">0</div>
+              <div class="kpi-subtext">Active analyst work</div>
+            </div>
+            <div class="kpi-card total">
+              <div class="kpi-header"><span class="kpi-label">Needs Information</span></div>
+              <div class="kpi-value" id="case-stat-info">0</div>
+              <div class="kpi-subtext">Customer outreach pending</div>
+            </div>
+            <div class="kpi-card low">
+              <div class="kpi-header"><span class="kpi-label">Resolved</span></div>
+              <div class="kpi-value" id="case-stat-resolved">0</div>
+              <div class="kpi-subtext">Final analyst decision logged</div>
+            </div>
+          </div>
+
+          <!-- Filter Toolbar for Cases -->
+          <div class="filter-toolbar">
+            <div class="filter-group">
+              <select id="filter-case-status" class="select-filter">
+                <option value="ALL">All Statuses</option>
+                <option value="OPEN">OPEN</option>
+                <option value="UNDER_REVIEW">UNDER_REVIEW</option>
+                <option value="NEEDS_MORE_INFORMATION">NEEDS_MORE_INFORMATION</option>
+                <option value="RESOLVED">RESOLVED</option>
+              </select>
+
+              <select id="filter-case-priority" class="select-filter">
+                <option value="ALL">All Priorities</option>
+                <option value="CRITICAL">CRITICAL</option>
+                <option value="HIGH">HIGH</option>
+                <option value="MEDIUM">MEDIUM</option>
+                <option value="LOW">LOW</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Cases Table -->
+          <div class="table-container">
+            <table class="custom-table" id="cases-table">
+              <thead>
+                <tr>
+                  <th>Case ID</th>
+                  <th>Transaction ID</th>
+                  <th>Customer</th>
+                  <th>Risk Score</th>
+                  <th>Priority</th>
+                  <th>Status</th>
+                  <th>Assigned Analyst</th>
+                  <th>Decision</th>
+                  <th>Created At</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="cases-tbody">
+                <tr><td colspan="10" style="text-align: center;">Loading cases...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           VIEW 8: MODEL & SHAP ANALYTICS
+           ========================================== -->
+      <section id="model-view" class="view-section">
+        <div class="panel-card" style="margin-bottom: 24px;">
+          <div class="panel-title">
+            <span>Model Validation & Explainability Architecture</span>
+          </div>
+          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px;">
+            The risk engine is built on an enterprise-calibrated XGBoost classifier trained on 20,000 synthetic transaction records. 
+            All inferences are explained at the individual transaction level using SHAP (SHapley Additive exPlanations) TreeExplainer, 
+            ensuring full auditability and preventing black-box decisions.
+          </p>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div style="background: rgba(0, 0, 0, 0.25); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 16px;">
+              <h4 style="font-size: 0.9rem; margin-bottom: 12px; color: #60a5fa;">Confusion Matrix (Stratified Test Set)</h4>
+              <img src="/outputs/confusion_matrix.png" alt="Confusion Matrix" style="width: 100%; border-radius: var(--radius-sm); max-height: 340px; object-fit: contain;">
+            </div>
+            <div style="background: rgba(0, 0, 0, 0.25); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 16px;">
+              <h4 style="font-size: 0.9rem; margin-bottom: 12px; color: #60a5fa;">Receiver Operating Characteristic (ROC Curve)</h4>
+              <img src="/outputs/roc_curve.png" alt="ROC Curve" style="width: 100%; border-radius: var(--radius-sm); max-height: 340px; object-fit: contain;">
+            </div>
+            <div style="background: rgba(0, 0, 0, 0.25); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 16px;">
+              <h4 style="font-size: 0.9rem; margin-bottom: 12px; color: #60a5fa;">Global Feature Importance Ranking</h4>
+              <img src="/outputs/feature_importance.png" alt="Feature Importance" style="width: 100%; border-radius: var(--radius-sm); max-height: 340px; object-fit: contain;">
+            </div>
+            <div style="background: rgba(0, 0, 0, 0.25); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 16px;">
+              <h4 style="font-size: 0.9rem; margin-bottom: 12px; color: #60a5fa;">Dataset Class Distribution</h4>
+              <img src="/outputs/class_distribution.png" alt="Class Distribution" style="width: 100%; border-radius: var(--radius-sm); max-height: 340px; object-fit: contain;">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           VIEW 9: MODEL MONITORING & DATA DRIFT
+           ========================================== -->
+      <section id="monitoring-view" class="view-section">
+        <div class="panel-card" style="margin-bottom: 24px;">
+          <div class="panel-title">
+            <span>Model Health & Statistical Data Drift Monitoring</span>
+            <button class="btn-primary" id="btn-export-retraining">Export Retraining Dataset (CSV)</button>
+          </div>
+          <p style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 20px;">
+            Monitors production model performance, feature attributions, and empirical statistical drift (Normalized Absolute Mean Shift) between training distributions and live transactions.
+          </p>
+
+          <!-- Model Health Metrics Card -->
+          <div style="background: rgba(0,0,0,0.25); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 18px; margin-bottom: 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+              <h4 style="font-size: 0.92rem; color: #60a5fa;">Active Production Model Health</h4>
+              <span class="badge low" id="mon-model-status">ACTIVE_PRODUCTION</span>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; text-align: center;">
+              <div style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+                <div style="font-size: 0.74rem; color: var(--text-dim);">Model Version</div>
+                <div id="mon-version" style="font-size: 1.05rem; font-weight: 700; color: white;">v1.0.0</div>
+              </div>
+              <div style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+                <div style="font-size: 0.74rem; color: var(--text-dim);">Training Samples</div>
+                <div id="mon-train-samples" style="font-size: 1.05rem; font-weight: 700; color: white;">16,000</div>
+              </div>
+              <div style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+                <div style="font-size: 0.74rem; color: var(--text-dim);">Test Samples</div>
+                <div id="mon-test-samples" style="font-size: 1.05rem; font-weight: 700; color: white;">4,000</div>
+              </div>
+              <div style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+                <div style="font-size: 0.74rem; color: var(--text-dim);">Precision</div>
+                <div id="mon-precision" style="font-size: 1.05rem; font-weight: 700; color: #34d399;">100%</div>
+              </div>
+              <div style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+                <div style="font-size: 0.74rem; color: var(--text-dim);">Recall</div>
+                <div id="mon-recall" style="font-size: 1.05rem; font-weight: 700; color: #34d399;">100%</div>
+              </div>
+              <div style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+                <div style="font-size: 0.74rem; color: var(--text-dim);">ROC-AUC</div>
+                <div id="mon-roc-auc" style="font-size: 1.05rem; font-weight: 700; color: #34d399;">1.000</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Statistical Data Drift Monitor Table -->
+          <div style="background: rgba(0,0,0,0.25); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 18px; margin-bottom: 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <div>
+                <h4 style="font-size: 0.92rem; color: #60a5fa;">Statistical Feature Drift Monitor (NAMS Distance)</h4>
+                <span id="mon-drift-msg" style="font-size: 0.76rem; color: var(--text-dim);">Comparing reference training distributions against recent transaction stream</span>
+              </div>
+              <span class="badge low" id="mon-overall-drift-badge">LOW DRIFT</span>
+            </div>
+
+            <div class="table-container">
+              <table class="custom-table" id="drift-table">
+                <thead>
+                  <tr>
+                    <th>Feature Attribute</th>
+                    <th>Drift Distance Score</th>
+                    <th>Drift Status</th>
+                    <th>Reference Mean (&mu;<sub>ref</sub>)</th>
+                    <th>Current Mean (&mu;<sub>curr</sub>)</th>
+                    <th>Distribution Shift</th>
+                  </tr>
+                </thead>
+                <tbody id="drift-tbody">
+                  <tr><td colspan="6" style="text-align: center;">Evaluating data drift...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Feedback Loop Analytics -->
+          <div style="background: rgba(0,0,0,0.25); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 18px;">
+            <h4 style="font-size: 0.92rem; color: #60a5fa; margin-bottom: 14px;">Human Feedback Active Learning Retraining Loop</h4>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; text-align: center;">
+              <div class="kpi-card total" style="padding: 12px;">
+                <span style="font-size: 0.72rem; color: var(--text-dim);">Total Reviewed</span>
+                <div id="fb-total-reviewed" style="font-size: 1.3rem; font-weight: 700;">0</div>
+              </div>
+              <div class="kpi-card high" style="padding: 12px;">
+                <span style="font-size: 0.72rem; color: var(--text-dim);">Confirmed Suspicious</span>
+                <div id="fb-confirmed-suspicious" style="font-size: 1.3rem; font-weight: 700; color: #f87171;">0</div>
+              </div>
+              <div class="kpi-card low" style="padding: 12px;">
+                <span style="font-size: 0.72rem; color: var(--text-dim);">Marked Legitimate</span>
+                <div id="fb-marked-legitimate" style="font-size: 1.3rem; font-weight: 700; color: #34d399;">0</div>
+              </div>
+              <div class="kpi-card medium" style="padding: 12px;">
+                <span style="font-size: 0.72rem; color: var(--text-dim);">Needs Investigation</span>
+                <div id="fb-needs-investigation" style="font-size: 1.3rem; font-weight: 700; color: #fbbf24;">0</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           VIEW 10: RESPONSIBLE AI
+           ========================================== -->
+      <section id="responsible-view" class="view-section">
+        <div class="panel-card">
+          <div class="panel-title">
+            <span>Responsible AI & Governance Framework</span>
+            <span class="badge low">Compliance Policy Active</span>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; margin-top: 18px;">
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 18px;">
+              <h4 style="font-size: 0.92rem; color: #60a5fa; margin-bottom: 8px;">1. Privacy & Synthetic Data</h4>
+              <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.6;">
+                Operates exclusively on benchmark synthetic data. No real-world customer PII or production financial credentials are ever accessed or processed.
+              </p>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 18px;">
+              <h4 style="font-size: 0.92rem; color: #60a5fa; margin-bottom: 8px;">2. Explainability by Design</h4>
+              <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.6;">
+                Every prediction is mathematically explained via SHAP TreeExplainer. Black-box opaque decisions are strictly prohibited.
+              </p>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 18px;">
+              <h4 style="font-size: 0.92rem; color: #60a5fa; margin-bottom: 8px;">3. Human-in-the-Loop Oversight</h4>
+              <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.6;">
+                Autonomous freezing, blocking, or asset denial is strictly disabled. The system acts solely as decision-support; consequential decisions remain with human analysts.
+              </p>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 18px;">
+              <h4 style="font-size: 0.92rem; color: #60a5fa; margin-bottom: 8px;">4. Role Division Principle</h4>
+              <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.6;">
+                <strong>XGBoost:</strong> Mathematical risk scoring.<br>
+                <strong>SHAP:</strong> Feature attribution explainability.<br>
+                <strong>Gemini:</strong> Narrative synthesis & inquiry assistant.<br>
+                <strong>Human Analyst:</strong> Final consequential decision.
+              </p>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 18px;">
+              <h4 style="font-size: 0.92rem; color: #60a5fa; margin-bottom: 8px;">5. Security & Secrets Management</h4>
+              <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.6;">
+                All credentials and API keys reside in server-side environment variables (.env). The client bundle never exposes keys or sensitive endpoints.
+              </p>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 18px;">
+              <h4 style="font-size: 0.92rem; color: #60a5fa; margin-bottom: 8px;">6. Limitations & Scope</h4>
+              <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.6;">
+                This software is a hackathon innovation prototype. Pre-production testing and localized regulatory audits are required before production banking deployment.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<!-- ==========================================
+     DRAWER: FULL TRANSACTION INVESTIGATION WORKSPACE
+     ========================================== -->
+<div class="drawer-overlay" id="drawer-overlay"></div>
+<div class="drawer" id="investigation-drawer" style="width: 760px;">
+  <div class="drawer-header">
+    <div>
+      <h3 id="drawer-tx-id" style="font-size: 1.18rem; font-weight: 700;">Transaction TX103934</h3>
+      <span id="drawer-tx-timestamp" style="font-size: 0.78rem; color: var(--text-dim);">Recorded at --</span>
+    </div>
+    <button class="drawer-close" id="btn-close-drawer">&times;</button>
+  </div>
+
+  <div class="drawer-body">
+
+    <!-- 1. Transaction Facts Grid -->
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; background: rgba(255, 255, 255, 0.02); padding: 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+      <div>
+        <span style="font-size: 0.72rem; color: var(--text-dim); text-transform: uppercase;">Amount (BDT)</span>
+        <div id="drawer-amount" style="font-size: 1.15rem; font-weight: 700; color: white;">৳0.00</div>
+      </div>
+      <div>
+        <span style="font-size: 0.72rem; color: var(--text-dim); text-transform: uppercase;">Customer ID</span>
+        <div id="drawer-customer" style="font-size: 0.9rem; font-weight: 600; color: #93c5fd;">--</div>
+      </div>
+      <div>
+        <span style="font-size: 0.72rem; color: var(--text-dim); text-transform: uppercase;">Recipient ID</span>
+        <div id="drawer-receiver" style="font-size: 0.9rem; font-weight: 600; color: white;">--</div>
+      </div>
+      <div>
+        <span style="font-size: 0.72rem; color: var(--text-dim); text-transform: uppercase;">Location</span>
+        <div id="drawer-location" style="font-size: 0.85rem; color: var(--text-main);">--</div>
+      </div>
+      <div>
+        <span style="font-size: 0.72rem; color: var(--text-dim); text-transform: uppercase;">Hardware ID</span>
+        <div id="drawer-device" style="font-size: 0.85rem; color: var(--text-main);">--</div>
+      </div>
+      <div>
+        <span style="font-size: 0.72rem; color: var(--text-dim); text-transform: uppercase;">Amount Deviation</span>
+        <div id="drawer-deviation" style="font-size: 0.95rem; font-weight: 700; color: #f59e0b;">--</div>
+      </div>
+    </div>
+
+    <!-- 2. Risk Assessment Summary Banner -->
+    <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(0, 0, 0, 0.35); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 16px 20px;">
+      <div>
+        <div style="font-size: 0.74rem; color: var(--text-dim); text-transform: uppercase;">Assessed Risk Level</div>
+        <div id="drawer-risk-badge" style="margin-top: 4px;">
+          <span class="badge high">HIGH RISK</span>
+        </div>
+      </div>
+      <div style="text-align: right;">
+        <div style="font-size: 0.74rem; color: var(--text-dim); text-transform: uppercase;">Risk Score</div>
+        <div id="drawer-risk-score" style="font-size: 2.2rem; font-weight: 800; color: #f87171;">--</div>
+      </div>
+      <div style="text-align: right;">
+        <div style="font-size: 0.74rem; color: var(--text-dim); text-transform: uppercase;">Governance Action</div>
+        <div id="drawer-action" style="font-size: 0.85rem; font-weight: 700; color: #cbd5e1; margin-top: 4px;">HUMAN_REVIEW</div>
+      </div>
+    </div>
+
+    <!-- 3. Risk Story / Transaction Timeline Component -->
+    <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 16px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+        <div>
+          <span style="font-size: 0.92rem; font-weight: 700; color: #38bdf8;">Why is this transaction unusual?</span>
+          <span style="font-size: 0.76rem; color: var(--text-dim); display: block;">Chronological Forensic Timeline</span>
+        </div>
+        <span class="badge medium" style="font-size: 0.7rem;">Behavioral Milestone</span>
+      </div>
+      <div id="drawer-timeline-container" style="display: flex; flex-direction: column; gap: 10px;">
+        <!-- Filled dynamically -->
+      </div>
+    </div>
+
+    <!-- 4. Scam Intelligence Section -->
+    <div id="drawer-scam-box" style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: var(--radius-sm); padding: 16px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+        <span style="font-size: 0.88rem; font-weight: 700; color: #fbbf24;">Potential Scam Pattern Intelligence</span>
+        <span class="badge medium" id="drawer-scam-badge">Requires Investigation</span>
+      </div>
+      <div id="drawer-scam-patterns-list" style="font-size: 0.82rem; color: var(--text-main); display: flex; flex-direction: column; gap: 8px;">
+        <!-- Populated dynamically -->
+      </div>
+    </div>
+
+    <!-- 5. Account Takeover (ATO) Indicators -->
+    <div id="drawer-ato-card" style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.25); border-radius: var(--radius-sm); padding: 16px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+        <span style="font-size: 0.88rem; font-weight: 700; color: #f87171;">Account Takeover Risk Signals</span>
+        <span class="badge high" id="drawer-ato-badge">HIGH ATO RISK</span>
+      </div>
+      <p id="drawer-ato-headline" style="font-size: 0.82rem; color: #fca5a5; font-weight: 600; margin-bottom: 10px;">
+        Potential account takeover indicators detected.
+      </p>
+      <ul id="drawer-ato-signals-list" style="padding-left: 18px; font-size: 0.8rem; color: #cbd5e1;">
+        <!-- Populated dynamically -->
+      </ul>
+    </div>
+
+    <!-- 6. Risk Score Breakdown (SHAP Factors) -->
+    <div class="shap-card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+        <div>
+          <span style="font-size: 0.92rem; font-weight: 700;">Top Contributing Signals</span>
+          <span style="font-size: 0.76rem; color: var(--text-dim); display: block;">Local SHAP TreeExplainer Attributions (Positive & Negative)</span>
+        </div>
+        <span class="badge low" style="font-size: 0.7rem;">XAI Verified</span>
+      </div>
+      <div id="drawer-shap-container">
+        <!-- Rendered dynamically with real SHAP values -->
+      </div>
+    </div>
+
+    <!-- 7. Customer Normal Behavior (Baseline vs Current) -->
+    <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 16px;">
+      <h4 style="font-size: 0.88rem; color: #60a5fa; margin-bottom: 12px;">Customer Normal Behavior Baseline vs Current Transaction</h4>
+      <div class="table-container">
+        <table class="custom-table" style="font-size: 0.82rem;">
+          <thead>
+            <tr>
+              <th>Metric Attribute</th>
+              <th>Customer Normal Profile</th>
+              <th>Current Transaction</th>
+              <th>Status / Variance</th>
+            </tr>
+          </thead>
+          <tbody id="drawer-baseline-tbody">
+            <!-- Populated dynamically -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 8. Network & Entity Intelligence -->
+    <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 16px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+        <h4 style="font-size: 0.88rem; color: #60a5fa;">Entity Relationship & Mule Graph Intelligence</h4>
+        <span id="drawer-network-summary-pill" class="badge medium" style="font-size: 0.7rem;">Graph Mapped</span>
+      </div>
+      <div id="drawer-network-insights" style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">
+        <!-- Populated dynamically -->
+      </div>
+    </div>
+
+    <!-- 9. Gemini AI Investigation Assistant Section -->
+    <div class="ai-section">
+      <div class="ai-header">
+        <span class="ai-pill">GEMINI 2.5 FLASH</span>
+        <h4 style="font-size: 0.95rem; font-weight: 600;">AI Investigation Assistant</h4>
+      </div>
+
+      <div id="ai-loading" style="display: none; padding: 20px; text-align: center; color: #93c5fd;">
+        <span style="display: inline-block; animation: pulse 1s infinite;">Synthesizing transaction telemetry, SHAP, and ATO evidence...</span>
+      </div>
+
+      <div id="ai-content-box">
+        <div class="ai-summary-box" id="ai-summary-text">
+          Evaluating case with Gemini 2.5 Flash...
+        </div>
+
+        <div>
+          <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 6px;">Key Observed Risk Signals:</span>
+          <ul class="findings-list" id="ai-findings-list"></ul>
+        </div>
+
+        <div>
+          <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 6px;">Behavioral Deviations from Baseline:</span>
+          <ul class="findings-list" id="ai-deviations-list"></ul>
+        </div>
+
+        <div>
+          <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 6px;">Specific Evidence for Human Analyst to Verify:</span>
+          <ul class="findings-list" id="ai-evidence-list"></ul>
+        </div>
+      </div>
+
+      <!-- Quick Inquiry Pills -->
+      <div style="margin-top: 14px;">
+        <span style="font-size: 0.74rem; color: var(--text-dim); display: block; margin-bottom: 6px; text-transform: uppercase;">Analyst Quick Inquiry Questions:</span>
+        <div class="quick-prompts">
+          <button class="prompt-pill" data-q="Why was this transaction flagged?">Why was this flagged?</button>
+          <button class="prompt-pill" data-q="What changed from the customer's normal behavior?">What changed from baseline?</button>
+          <button class="prompt-pill" data-q="What are the top risk factors?">Top risk factors?</button>
+          <button class="prompt-pill" data-q="Could this indicate account takeover?">Could this indicate ATO?</button>
+          <button class="prompt-pill" data-q="What should the analyst investigate next?">What to investigate next?</button>
+          <button class="prompt-pill" data-q="Summarize this case for the fraud manager.">Summarize case</button>
+          <button class="prompt-pill" data-q="Compare this transaction with the customer's baseline.">Compare with baseline</button>
+        </div>
+      </div>
+
+      <!-- Interactive Chat Log -->
+      <div class="chat-log" id="drawer-chat-log" style="margin-top: 14px;"></div>
+
+      <!-- Chat Input Bar -->
+      <div class="chat-input-bar">
+        <input type="text" id="drawer-chat-input" placeholder="Ask Gemini about transaction evidence, baseline, or ATO signals...">
+        <button id="btn-send-chat">Ask</button>
+      </div>
+    </div>
+
+    <!-- 10. Human Analyst Feedback & Case Management Decision Section -->
+    <div class="feedback-box">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+        <span style="font-size: 0.88rem; font-weight: 700;">Human Analyst Review Determination</span>
+        <button class="btn-action" id="btn-create-case-from-drawer" style="padding: 4px 10px; font-size: 0.74rem; color: #38bdf8;">Create Formal Case</button>
+      </div>
+      <span style="font-size: 0.76rem; color: var(--text-dim); display: block; margin-bottom: 12px;">
+        Record your final determination. Permanently stored in SQLite/PostgreSQL audit log and active learning feedback loop.
+      </span>
+
+      <textarea id="feedback-notes" class="search-input" style="width: 100%; height: 60px; resize: none; margin-bottom: 10px;" placeholder="Analyst Reason / Justification notes (e.g. Verified customer initiated transfer via known backup phone)..."></textarea>
+
+      <div class="decision-buttons">
+        <button class="btn-decide suspicious" id="btn-feedback-suspicious">Confirm Suspicious</button>
+        <button class="btn-decide legitimate" id="btn-feedback-legitimate">Mark Legitimate</button>
+        <button class="btn-decide review" id="btn-feedback-review">Needs More Investigation</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Notification Toast -->
+<div class="toast" id="app-toast">Notification message</div>
+
+<script src="/static/js/app.js"></script>
+</body>
+</html>

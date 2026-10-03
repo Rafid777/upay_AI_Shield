@@ -1,0 +1,54 @@
+{
+  "dataset_info": {
+    "total_rows": 20000,
+    "train_rows": 16000,
+    "test_rows": 4000,
+    "features": [
+      "amount",
+      "hour",
+      "day_of_week",
+      "is_new_receiver",
+      "is_new_device",
+      "location_changed",
+      "transactions_last_1h",
+      "transactions_last_24h",
+      "failed_attempts",
+      "account_age_days",
+      "receiver_transaction_count",
+      "amount_deviation"
+    ],
+    "target": "is_fraud",
+    "label_type": "SYNTHETIC_BENCHMARK"
+  },
+  "validation": {
+    "missing_values": {
+      "amount": 0,
+      "hour": 0,
+      "day_of_week": 0,
+      "is_new_receiver": 0,
+      "is_new_device": 0,
+      "location_changed": 0,
+      "transactions_last_1h": 0,
+      "transactions_last_24h": 0,
+      "failed_attempts": 0,
+      "account_age_days": 0,
+      "receiver_transaction_count": 0,
+      "amount_deviation": 0,
+      "is_fraud": 0
+    },
+    "total_missing": 0,
+    "duplicate_transactions": 0,
+    "target_distribution": {
+      "synthetic_label_notice": "is_fraud is a synthetic benchmark label, not real-world ground truth",
+      "counts": {
+        "0": 18425,
+        "1": 1575
+      },
+      "percentages": {
+        "0": 92.12,
+        "1": 7.88
+      }
+    },
+    "numeric_anomalies": {}
+  }
+}

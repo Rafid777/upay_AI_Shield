@@ -1,0 +1,67 @@
+{
+  "model_name": "upay AI Shield XGBoost Risk Classifier",
+  "model_version": "upay-ai-shield-v1.0.0",
+  "algorithm": "XGBClassifier",
+  "training_date": "2026-10-03T07:04:08.267208+00:00",
+  "framework": "xgboost",
+  "num_training_rows": 16000,
+  "num_test_rows": 4000,
+  "features": [
+    "amount",
+    "hour",
+    "day_of_week",
+    "is_new_receiver",
+    "is_new_device",
+    "location_changed",
+    "transactions_last_1h",
+    "transactions_last_24h",
+    "failed_attempts",
+    "account_age_days",
+    "receiver_transaction_count",
+    "amount_deviation"
+  ],
+  "feature_count": 12,
+  "target": "is_fraud",
+  "evaluation_metrics": {
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1_score": 1.0,
+    "roc_auc": 1.0,
+    "false_positive_rate": 0.0,
+    "false_negative_rate": 0.0,
+    "confusion_matrix": {
+      "true_negatives": 3685,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "true_positives": 315
+    },
+    "test_samples": 4000,
+    "positive_test_cases": 315
+  },
+  "hyperparameters": {
+    "n_estimators": 250,
+    "learning_rate": 0.04,
+    "max_depth": 5,
+    "scale_pos_weight": 11.7,
+    "random_state": 42
+  },
+  "risk_thresholds": {
+    "low": {
+      "min": 0,
+      "max": 49.99,
+      "action": "CONTINUE"
+    },
+    "medium": {
+      "min": 50.0,
+      "max": 79.99,
+      "action": "ADDITIONAL_REVIEW"
+    },
+    "high": {
+      "min": 80.0,
+      "max": 100.0,
+      "action": "HUMAN_REVIEW"
+    }
+  },
+  "governance_note": "The AI model produces risk probability scores. Autonomous blocking/freezing is forbidden; high risk transactions are routed to human analysts."
+}

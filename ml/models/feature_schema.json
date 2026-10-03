@@ -1,0 +1,104 @@
+{
+  "features": [
+    "amount",
+    "hour",
+    "day_of_week",
+    "is_new_receiver",
+    "is_new_device",
+    "location_changed",
+    "transactions_last_1h",
+    "transactions_last_24h",
+    "failed_attempts",
+    "account_age_days",
+    "receiver_transaction_count",
+    "amount_deviation"
+  ],
+  "feature_count": 12,
+  "target": "is_fraud",
+  "statistics": {
+    "amount": {
+      "type": "float64",
+      "min": 50.0,
+      "max": 101621.64,
+      "mean": 3246.4407,
+      "std": 6189.2334
+    },
+    "hour": {
+      "type": "int64",
+      "min": 0.0,
+      "max": 23.0,
+      "mean": 13.7767,
+      "std": 5.4786
+    },
+    "day_of_week": {
+      "type": "int64",
+      "min": 0.0,
+      "max": 6.0,
+      "mean": 2.9821,
+      "std": 1.9984
+    },
+    "is_new_receiver": {
+      "type": "int64",
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.1864,
+      "std": 0.3894
+    },
+    "is_new_device": {
+      "type": "int64",
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.1423,
+      "std": 0.3494
+    },
+    "location_changed": {
+      "type": "int64",
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.1181,
+      "std": 0.3227
+    },
+    "transactions_last_1h": {
+      "type": "int64",
+      "min": 0.0,
+      "max": 15.0,
+      "mean": 2.6489,
+      "std": 2.6723
+    },
+    "transactions_last_24h": {
+      "type": "int64",
+      "min": 1.0,
+      "max": 40.0,
+      "mean": 8.5117,
+      "std": 6.7071
+    },
+    "failed_attempts": {
+      "type": "int64",
+      "min": 0.0,
+      "max": 6.0,
+      "mean": 0.5777,
+      "std": 1.0764
+    },
+    "account_age_days": {
+      "type": "int64",
+      "min": 30.0,
+      "max": 2498.0,
+      "mean": 1227.229,
+      "std": 718.0475
+    },
+    "receiver_transaction_count": {
+      "type": "int64",
+      "min": 0.0,
+      "max": 59.0,
+      "mean": 28.2902,
+      "std": 17.8806
+    },
+    "amount_deviation": {
+      "type": "float64",
+      "min": 0.0,
+      "max": 18.99,
+      "mean": 1.4544,
+      "std": 3.1281
+    }
+  }
+}
